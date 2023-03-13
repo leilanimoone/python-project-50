@@ -15,6 +15,7 @@ jobs:
         run: |
           pip install poetry
           pip install pytest
+          pip install pytest-cov
           make install
       - name: Run linter
         run: make lint
@@ -23,7 +24,7 @@ jobs:
       - name: Code Coverage
         uses: paambaati/codeclimate-action@v3.2.0
         env:
-          CC_TEST_REPORTER_ID: ec8cfcd46f5b7135125f895d71954f45e5ed384e3f44075455651e3891eff917
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: make test-coverage
           debug: true
