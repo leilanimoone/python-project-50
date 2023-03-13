@@ -15,7 +15,6 @@ jobs:
         run: |
           pip install poetry
           pip install pytest
-          pip install pytest-cov
           make install
       - name: Run linter
         run: make lint
