@@ -1,7 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/leilanimoone/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/leilanimoone/python-project-50/actions)
 
-[![Actions Status](https://github.com/leilanimoone/python-project-50/workflows/main.yml/badge.svg)](https://github.com/leilanimoone/python-project-50/actions)
+[![CI Check](https://github.com/leilanimoone/python-project-50/actions/workflows/main.yml/badge.svg)](https://github.com/leilanimoone/python-project-50/actions/workflows/main.yml)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/446c75c7fabb50a49a8b/maintainability)](https://codeclimate.com/github/leilanimoone/python-project-50/maintainability)
 
