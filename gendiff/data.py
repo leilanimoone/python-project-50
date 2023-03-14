@@ -1,6 +1,17 @@
 import json
+import yaml
+import os
 
 
-def prepare_data(file):
-    with open(file, 'r') as data:
-        return json.load(data)
+formats = {'json': json.load,
+           'yml': yaml.safe_load,
+           'yaml': yaml.safe_load}
+
+
+def prepare_data(file, format):
+    with open(file) as data:
+        return formats[format](data)
+
+
+def get_format(file):
+    return os.path.splitext(file)[1].lstrip('.')
