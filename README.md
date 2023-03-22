@@ -3,17 +3,15 @@
 
 # Description:
 
----
-
 **Difference calculator**
 
 Calculates the differences between two files of **json** or **yaml** formats.
 
 ---
 
-`gendiff -h` - **get help**
+`**gendiff -h**` - get help
 
-`gendiff -f <format> <first_file> <second_file>` - **start file comparison**
+`**gendiff -f <format> <first_file> <second_file>**` - start file comparison
 
 ---
 
