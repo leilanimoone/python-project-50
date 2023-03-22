@@ -7,10 +7,15 @@ json2 = 'tests/fixtures/file2.json'
 yml1 = 'tests/fixtures/file1.yml'
 yml2 = 'tests/fixtures/file2.yml'
 result_stylish = 'tests/fixtures/result_stylish'
+result_plain = 'tests/fixtures/result_plain'
 
-@pytest.mark.parametrize('file1, file2, result', 
-                        [(json1, json2, result_stylish),
-                        (yml1, yml2, result_stylish)])
-def test_gendiff(file1, file2, result):
+formaters = ['stylish', 'plain']
+
+@pytest.mark.parametrize('file1, file2, result, format_name', 
+                        [(json1, json2, result_stylish, formaters[0]),
+                        (json1, json2, result_plain, formaters[1]),
+                        (yml1, yml2, result_stylish, formaters[0]),
+                        (yml1, yml2, result_plain, formaters[1])])
+def test_gendiff(file1, file2, result, format_name):
     with open(result) as res:
-        assert generate_diff(file1, file2) == res.read()
+        assert generate_diff(file1, file2, format_name) == res.read()
