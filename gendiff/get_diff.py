@@ -1,4 +1,4 @@
-def get_diff(data1, data2):
+def get_diff(data1, data2):  # noqa: C901
     diff = {}
     sorted_keys = sorted(set(data1.keys()) | set(data2.keys()))
     for key in sorted_keys:
