@@ -1,37 +1,30 @@
-from gendiff.formaters.change_value import change_value
-
-
-def string_convert(data):
-    values = ('true', 'false', 'null')
+def to_string(data):
+    if isinstance(data, bool):
+        return str(data).lower()
     if isinstance(data, dict):
         return '[complex value]'
-    elif data in values or isinstance(data, (int, float)):
+    if isinstance(data, (int, float)):
         return data
-    else:
-        return f"'{data}'"
+    if isinstance(data, type(None)):
+        return 'null'
+    return f"'{data}'"
 
 
-def build_plain(data, path=''):
+def plain_format(data, path=''):
     lines = []
-    data = change_value(data)
-    for key in data:
-        full_path = f"{path}{key}"
-        res = data[key]
-        if res['status'] == 'added':
+    for dictionary in data:
+        full_path = f"{path}{dictionary['key']}"
+        if dictionary['status'] == 'added':
             lines.append(f"Property '{full_path}' "
                          f"was added with value: "
-                         f"{string_convert(res['value'])}")
-        elif res['status'] == 'removed':
+                         f"{to_string(dictionary['value'])}")
+        elif dictionary['status'] == 'removed':
             lines.append(f"Property '{full_path}' was removed")
-        elif res['status'] == 'changed':
+        elif dictionary['status'] == 'changed':
             lines.append(f"Property '{full_path}' was updated. "
-                         f"From {string_convert(res['old'])} to "
-                         f"{string_convert(res['new'])}")
-        elif res['status'] == 'nested':
-            p = build_plain(res['value'], f"{full_path}.")
+                         f"From {to_string(dictionary['old'])} to "
+                         f"{to_string(dictionary['new'])}")
+        elif dictionary['status'] == 'nested':
+            p = plain_format(dictionary['value'], f"{full_path}.")
             lines.append(f"{p}")
     return '\n'.join(lines)
-
-
-def use_format(data):
-    return build_plain(data)

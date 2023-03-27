@@ -5,6 +5,8 @@ description = "Calculates the differences between two files of json or yaml form
 authors = ["Lera <leilanimoone@gmail.com>"]
 readme = "README.md"
 packages = [{include = "gendiff"}]
+repository = "https://github.com/leilanimoone/python-project-50"
+classifiers = ["Topic :: Software Development :: Libraries :: Python Modules"]
 
 [tool.poetry.dependencies]
 python = "^3.10"

@@ -8,9 +8,15 @@ formats = {'json': json.load,
            'yaml': yaml.safe_load}
 
 
-def prepare_data(file, format):
-    with open(file) as data:
-        return formats[format](data)
+def prepare_dict(data, format):
+    if format not in formats:
+        raise ValueError(f'Unsupported file format. Supported formats: '
+                         f'{", ".join(list(formats.keys()))}')
+    return formats[format](data)
+
+
+def read_data(path):
+    return open(path)
 
 
 def get_format(file):

@@ -6,9 +6,9 @@ json1 = 'tests/fixtures/file1.json'
 json2 = 'tests/fixtures/file2.json'
 yml1 = 'tests/fixtures/file1.yml'
 yml2 = 'tests/fixtures/file2.yml'
-result_stylish = 'tests/fixtures/result_stylish'
-result_plain = 'tests/fixtures/result_plain'
-result_json = 'tests/fixtures/result_json'
+result_stylish = 'tests/fixtures/result_stylish.txt'
+result_plain = 'tests/fixtures/result_plain.txt'
+result_json = 'tests/fixtures/result_json.txt'
 
 formaters = ['stylish', 'plain', 'json']
 
