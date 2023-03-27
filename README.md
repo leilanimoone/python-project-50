@@ -6,6 +6,6 @@ Calculates the differences between two files of **json** or **yaml** formats.
 
 [![asciicast](https://asciinema.org/a/87rwS2xDftpBggHL9vozv83jb.svg)](https://asciinema.org/a/87rwS2xDftpBggHL9vozv83jb)
 
-##Installation
+## Installation
 
 [![asciicast](https://asciinema.org/a/CVXgIACt32cwkoaAJqCvhffP6.svg)](https://asciinema.org/a/CVXgIACt32cwkoaAJqCvhffP6)
