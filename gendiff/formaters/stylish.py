@@ -9,33 +9,33 @@ def to_string(data, depth):
                 lines.append(f"{' ' * depth}    {key}: {value}")
         lines.append(f"{' ' * depth}}}")
         return '\n'.join(lines)
-    if isinstance(data, type(None)):
+    if data is None:
         return 'null'
     if isinstance(data, bool):
         return str(data).lower()
     return data
 
 
-def stylish_format(data, depth=0):
+def build_stylish(data, depth=0):
     lines = ['{']
     for dictionary in data:
+        key = dictionary['key']
         if dictionary['status'] == 'changed':
-            lines.append(f"{' ' * depth}  - {dictionary['key']}: "
-                         f"{to_string(dictionary['old'], depth + 4)}")
-            lines.append(f"{' ' * depth}  + {dictionary['key']}: "
-                         f"{to_string(dictionary['new'], depth + 4)}")
+            old = to_string(dictionary['old'], depth + 4)
+            new = to_string(dictionary['new'], depth + 4)
+            lines.append(f"{' ' * depth}  - {key}: {old}")
+            lines.append(f"{' ' * depth}  + {key}: {new}")
         elif dictionary['status'] == 'removed':
-            lines.append(f"{' ' * depth}  - {dictionary['key']}: "
-                         f"{to_string(dictionary['value'], depth + 4)}")
+            value = to_string(dictionary['value'], depth + 4)
+            lines.append(f"{' ' * depth}  - {key}: {value}")
         elif dictionary['status'] == 'nested':
-            new_dict = stylish_format(dictionary['value'], depth + 4)
-            lines.append(f"{' ' * depth}  "
-                         f"  {dictionary['key']}: {new_dict}")
+            new_dict = build_stylish(dictionary['value'], depth + 4)
+            lines.append(f"{' ' * depth}    {key}: {new_dict}")
         elif dictionary['status'] == 'added':
-            lines.append(f"{' ' * depth}  + {dictionary['key']}: "
-                         f"{to_string(dictionary['value'], depth + 4)}")
+            value = to_string(dictionary['value'], depth + 4)
+            lines.append(f"{' ' * depth}  + {key}: {value}")
         else:
-            lines.append(f"{' ' * depth}    {dictionary['key']}: "
-                         f"{to_string(dictionary['value'], depth + 4)}")
+            value = to_string(dictionary['value'], depth + 4)
+            lines.append(f"{' ' * depth}    {key}: {value}")
     lines.append(f"{' ' * depth}}}")
     return '\n'.join(lines)

@@ -11,7 +11,7 @@ formats = {'json': json.load,
 def prepare_dict(data, format):
     if format not in formats:
         raise ValueError(f'Unsupported file format. Supported formats: '
-                         f'{", ".join(list(formats.keys()))}')
+                         f'{", ".join(list(formats))}')
     return formats[format](data)
 
 

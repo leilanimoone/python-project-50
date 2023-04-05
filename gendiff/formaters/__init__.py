@@ -1,9 +1,9 @@
 from . import stylish, plain, json
 
 
-FORMATERS = {'stylish': stylish.stylish_format,
-             'plain': plain.plain_format,
-             'json': json.json_format}
+FORMATERS = {'stylish': stylish.build_stylish,
+             'plain': plain.build_plain,
+             'json': json.build_json}
 
 
 def formater(data, format):
